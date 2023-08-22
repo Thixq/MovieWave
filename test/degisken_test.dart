@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tmdb_movie/core/constant/network_constant/network_constant.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_model/movie_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/movie_tv_search_result_generic_model/movie_tv_search_result_generic_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/tv_utilts/tv_show_result_model/tv_show_result_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/tv_show_model/tv_show_model.dart';
+import 'package:tmdb_movie/core/model/tmdb_models/tv_show_season_model/tv_show_season_model.dart';
 
 void main() {
   final options = BaseOptions(
@@ -15,8 +17,8 @@ void main() {
       'content-type': 'application/json',
     },
     queryParameters: {
-      // 'append_to_response': 'images,videos,credits,similar',
-      'with_genres': '18',
+      'append_to_response': 'images,videos,credits',
+      // 'with_genres': '18',
     },
   );
   test('movie request', () async {
@@ -25,26 +27,15 @@ void main() {
         await dio.get<Map<String, dynamic>>('${NetworkConstant.moviePath}/550');
     final result = MovieModel().fromJson(response.data!);
     final similarId = result.similar?.results?.length;
-    print(similarId);
+    debugPrint(similarId.toString());
   });
   test('tv show request', () async {
     final dio = Dio(options);
     final response =
         await dio.get<Map<String, dynamic>>('${NetworkConstant.tvPath}/1402');
     final result = TvShowModel().fromJson(response.data!);
-    print(result.name);
+    debugPrint(result.name);
   });
-
-  // test('vexana request', () async {
-  //   final networkManager = NetworkManager<TMDBErrorModel>(options: options);
-  //   final response = await networkManager.send<MovieModel, MovieModel>(
-  //     '${NetworkConstant.moviePath}/550',
-  //     parseModel: MovieModel(),
-  //     method: RequestType.GET,
-  //   );
-  //   final similarId = response.data!.similar!.results![0].id;
-  //   print(similarId);
-  // });
 
   test('Tv Discover Request', () async {
     final discoverManager = Dio(options);
@@ -56,6 +47,14 @@ void main() {
       (p1) => TvShowResult.fromJson(p1! as Map<String, dynamic>),
     );
 
-    print(result.results![0].name);
+    debugPrint(result.results![0].name);
+  });
+  test('season request test', () async {
+    final seasonRequest = Dio(options);
+    final response = await seasonRequest.get<Map<String, dynamic>>(
+      '${NetworkConstant.tvPath}/1396${NetworkConstant.seasonPath}/1',
+    );
+    final result = const SeasonModel().fromJson(response.data!);
+    debugPrint(result.episodes![0].overview);
   });
 }

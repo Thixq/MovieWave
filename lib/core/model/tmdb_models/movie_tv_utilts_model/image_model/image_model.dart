@@ -1,28 +1,39 @@
+// ignore_for_file:  sort_constructors_first
 // ignore_for_file: public_member_api_docs
 
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'image_model.g.dart';
 
 @JsonSerializable()
-class MovieTvImages {
-  MovieTvImages({
+class MovieTvImages extends Equatable {
+  const MovieTvImages({
     this.backdrops,
+    this.posters,
   });
 
   factory MovieTvImages.fromJson(Map<String, dynamic> json) =>
       _$MovieTvImagesFromJson(json);
   @JsonKey(name: 'backdrops')
   final List<Backdrop>? backdrops;
+  @JsonKey(name: 'posters')
+  final List<Backdrop>? posters;
+
+  Map<String, dynamic> toJson() => _$MovieTvImagesToJson(this);
 
   MovieTvImages copyWith({
     List<Backdrop>? backdrops,
-  }) =>
-      MovieTvImages(
-        backdrops: backdrops ?? this.backdrops,
-      );
+    List<Backdrop>? posters,
+  }) {
+    return MovieTvImages(
+      backdrops: backdrops ?? this.backdrops,
+      posters: posters ?? this.posters,
+    );
+  }
 
-  Map<String, dynamic> toJson() => _$MovieTvImagesToJson(this);
+  @override
+  List<Object?> get props => [backdrops, posters];
 }
 
 @JsonSerializable()

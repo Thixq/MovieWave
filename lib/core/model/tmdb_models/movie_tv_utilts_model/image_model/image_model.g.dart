@@ -11,11 +11,15 @@ MovieTvImages _$MovieTvImagesFromJson(Map<String, dynamic> json) =>
       backdrops: (json['backdrops'] as List<dynamic>?)
           ?.map((e) => Backdrop.fromJson(e as Map<String, dynamic>))
           .toList(),
+      posters: (json['posters'] as List<dynamic>?)
+          ?.map((e) => Backdrop.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$MovieTvImagesToJson(MovieTvImages instance) =>
     <String, dynamic>{
       'backdrops': instance.backdrops,
+      'posters': instance.posters,
     };
 
 Backdrop _$BackdropFromJson(Map<String, dynamic> json) => Backdrop(
