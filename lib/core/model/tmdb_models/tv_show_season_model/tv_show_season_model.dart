@@ -14,7 +14,7 @@ part 'tv_show_season_model.g.dart';
 
 @JsonSerializable()
 class SeasonModel extends Equatable
-    implements INetworkModel<SeasonModel, SeasonModel> {
+    implements INetworkModel<SeasonModel, dynamic> {
   const SeasonModel({
     this.id,
     this.airDate,
@@ -87,7 +87,7 @@ class SeasonModel extends Equatable
   @override
   SeasonModel fromJson(
     Map<String, dynamic> json, {
-    SeasonModel Function(Object? p1)? fromJsonT,
+    dynamic Function(Object? p1)? fromJsonT,
   }) =>
       _$SeasonModelFromJson(json);
 
