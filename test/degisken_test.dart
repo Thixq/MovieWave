@@ -2,11 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tmdb_movie/core/constant/network_constant/network_constant.dart';
+import 'package:tmdb_movie/core/enum/request_type_enum.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_model/movie_model.dart';
+import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/movie_result_model/movie_result_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/movie_tv_search_result_generic_model/movie_tv_search_result_generic_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/tv_utilts/tv_show_result_model/tv_show_result_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/tv_show_model/tv_show_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/tv_show_season_model/tv_show_season_model.dart';
+import 'package:tmdb_movie/core/network/network_manager.dart';
 
 void main() {
   final options = BaseOptions(
@@ -50,11 +53,23 @@ void main() {
     debugPrint(result.results![0].name);
   });
   test('season request test', () async {
-    final seasonRequest = Dio(options);
-    final response = await seasonRequest.get<Map<String, dynamic>>(
-      '${NetworkConstant.tvPath}/1396${NetworkConstant.seasonPath}/1',
+    final asd = BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com');
+    final seasonRequest = Dio(asd);
+    final response = await seasonRequest.request(
+      '/posts',
+      data: const SeasonModel().toJson(),
     );
-    final result = const SeasonModel().fromJson(response.data!);
-    debugPrint(result.episodes![0].overview);
+    // final result = const SeasonModel().fromJson(response.data );
+    debugPrint(response.data.runtimeType.toString());
+    // debugPrint(result.episodes![0].overview);
+  });
+  test('basic network layer test', () async {
+    final service = NetworkManager<TvShowModel>(options: options);
+    final result = await service.send<MovieModel, MovieModel>(
+      '${NetworkConstant.moviePath}/550',
+      requestType: RequestType.GET,
+      parseModel: MovieModel(),
+    );
+    debugPrint(result.response!.title);
   });
 }

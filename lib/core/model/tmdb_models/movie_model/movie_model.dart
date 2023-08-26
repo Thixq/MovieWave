@@ -14,7 +14,7 @@ import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/video_mo
 part 'movie_model.g.dart';
 
 @JsonSerializable()
-class MovieModel extends INetworkModel<MovieModel, int> {
+class MovieModel extends INetworkModel<MovieModel, dynamic> {
   MovieModel({
     this.adult,
     this.backdropPath,
@@ -161,7 +161,7 @@ class MovieModel extends INetworkModel<MovieModel, int> {
   @override
   MovieModel fromJson(
     Map<String, dynamic> json, {
-    int Function(Object? p1)? fromJsonT,
+    dynamic Function(Object? p1)? fromJsonT,
   }) =>
       _$MovieModelFromJson(json);
 
