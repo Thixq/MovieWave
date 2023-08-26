@@ -3,7 +3,9 @@ import 'package:dio/src/adapters/io_adapter.dart'
     if (dart.library.html) 'package:dio/src/adapters/browser_adapter.dart'
     as adapter;
 import 'package:tmdb_movie/core/enum/request_type_enum.dart';
+import 'package:tmdb_movie/core/enum/tmdb_query_parameter_enum.dart';
 import 'package:tmdb_movie/core/extension/request_type_extension.dart';
+import 'package:tmdb_movie/core/extension/tmdb_query_parameter_extension.dart';
 import 'package:tmdb_movie/core/interface/INetworkManager.dart';
 import 'package:tmdb_movie/core/model/network_model.dart';
 import 'package:tmdb_movie/core/model/response_model.dart';
@@ -43,5 +45,20 @@ class NetworkManager<E extends INetworkModel<E, dynamic>>
     );
     final result = _getResultModel<R, T>(response.data, parseModel: parseModel);
     return Future(() => ResponseModel(result, errorModel));
+  }
+
+  @override
+  void addBaseHeader(Iterable<MapEntry<String, String>> header) {
+    options.headers.addEntries(header);
+  }
+
+  @override
+  void clearAllHeader() {
+    options.headers.clear();
+  }
+
+  @override
+  void removeAtHeader(String key) {
+    options.headers.remove(key);
   }
 }
