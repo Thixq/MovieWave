@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, cast_nullable_to_non_nullable, unnecessary_cast, lines_longer_than_80_chars, inference_failure_on_function_return_type, strict_raw_type
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tmdb_movie/core/model/network_model.dart';
+import 'package:tmdb_movie/core/interface/INetworkModel.dart';
 
 part 'movie_tv_search_result_generic_model.g.dart';
 

@@ -69,7 +69,7 @@ void main() {
   test('basic network layer test', () async {
     final service = NetworkManager<TvShowModel>(options: options);
     final result = await service.send<MovieModel, MovieModel>(
-      '${NetworkConstant.moviePath}/503',
+      '${NetworkConstant.moviePath}/603',
       requestType: RequestType.GET,
       parseModel: MovieModel(),
     );

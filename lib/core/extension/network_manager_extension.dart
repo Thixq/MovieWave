@@ -6,7 +6,6 @@ extension _CoreServiceExtension on NetworkManager {
     required T parseModel,
   }) {
     try {
-      print(data.runtimeType);
       if (data is List<dynamic>) {
         return data
             .map(
@@ -21,7 +20,7 @@ extension _CoreServiceExtension on NetworkManager {
         return parseModel.fromJson(data) as R;
       }
     } catch (e) {
-      throw e;
+      rethrow;
     }
     return null;
   }

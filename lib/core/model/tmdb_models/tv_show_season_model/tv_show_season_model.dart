@@ -4,7 +4,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:tmdb_movie/core/model/network_model.dart';
+import 'package:tmdb_movie/core/interface/INetworkModel.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/credits_model/credits_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/image_model/image_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/tv_utilts/tv_show_season_result_episode_model/tv_show_season_result_episode_model.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tmdb_movie/core/model/network_model.dart';
+import 'package:tmdb_movie/core/interface/INetworkModel.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/genre/genre.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/credits_model/credits_model.dart';
 import 'package:tmdb_movie/core/model/tmdb_models/movie_tv_utilts_model/image_model/image_model.dart';
