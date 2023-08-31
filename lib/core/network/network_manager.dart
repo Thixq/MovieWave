@@ -18,11 +18,13 @@ class NetworkManager<E extends INetworkModel<E, dynamic>>
   }
   E? errorModel;
 
-  R? _getResultModel<R, T extends INetworkModel<T, dynamic>>(
+  ResponseModel<R?, E?>? _getResult<R, T extends INetworkModel<T, dynamic>>(
     dynamic data, {
     required T parseModel,
   }) {
-    return _jsonParser<R, T>(data, parseModel: parseModel);
+    final result = _jsonParser<R, T>(data, parseModel: parseModel);
+    final respone = ResponseModel<R?, E?>(result, errorModel);
+    return respone;
   }
 
   @override
@@ -41,8 +43,7 @@ class NetworkManager<E extends INetworkModel<E, dynamic>>
       path,
       options: options,
     );
-    final result = _getResultModel<R, T>(response.data, parseModel: parseModel);
-    return Future(() => ResponseModel(result, errorModel));
+    return _getResult<R, T>(response.data, parseModel: parseModel)!;
   }
 
   @override
