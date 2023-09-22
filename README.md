@@ -1,3 +1,6 @@
+
+### TMDB veri tabanını kullanarak bir mobil uygulama geliştiriyorum. Kopyala yapıştırdansa oluşturduğum seneryolara göre SOLID prensiplerin uygun kodlama yapıyorum.
+
 # MovieWave - Explore the World of Movies and TV Shows
 
 MovieWave is a unique application designed for cinema and TV show enthusiasts. It aims to enrich your cinematic experience and provide you with a comprehensive guide to the world of television series. MovieWave offers the latest and most comprehensive information about all kinds of films and TV shows, making your viewing experience more enjoyable and informative.
