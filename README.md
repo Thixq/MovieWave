@@ -1,5 +1,5 @@
 
-### TMDB veri tabanını kullanarak bir mobil uygulama geliştiriyorum. Kopyala yapıştırdansa oluşturduğum seneryolara göre SOLID prensiplerin uygun kodlama yapıyorum.
+**TMDB veri tabanını kullanarak bir mobil uygulama geliştiriyorum. Kopyala yapıştırdansa oluşturduğum seneryolara göre SOLID prensiplerin uygun kodlama yapıyorum.**
 
 # MovieWave - Explore the World of Movies and TV Shows
 
