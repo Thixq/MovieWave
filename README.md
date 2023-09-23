@@ -1,5 +1,6 @@
+[![JJaZOP4.th.png](https://iili.io/JJaZOP4.th.png)](https://freeimage.host/i/JJaZOP4) [![JJaZvl2.th.png](https://iili.io/JJaZvl2.th.png)](https://freeimage.host/i/JJaZvl2) [![JJaZkKl.th.png](https://iili.io/JJaZkKl.th.png)](https://freeimage.host/i/JJaZkKl) [![JJaZNVf.th.png](https://iili.io/JJaZNVf.th.png)](https://freeimage.host/i/JJaZNVf)
 
-**TMDB veri tabanını kullanarak bir mobil uygulama geliştiriyorum. Kopyala yapıştırdansa oluşturduğum seneryolara göre SOLID prensiplerin uygun kodlama yapıyorum.**
+***I am developing a mobile application using the TMDB database. Instead of copy-pasting, I am coding according to the SOLID principles based on the scenarios I have created.***
 
 # MovieWave - Explore the World of Movies and TV Shows
 
