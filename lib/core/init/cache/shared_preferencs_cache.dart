@@ -1,5 +1,4 @@
 import 'package:tmdb_movie/core/interface/ICacheManager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheManager extends ICacheManager {
   CacheManager._();
