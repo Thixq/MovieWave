@@ -1,21 +1,29 @@
-import 'package:tmdb_movie/core/interface/ICacheManager.dart';
+import 'dart:js_interop';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheManager extends ICacheManager {
-  CacheManager._();
-  static CacheManager? _instance;
-  static CacheManager? get instance => _instance ??= CacheManager._();
-
-  @override
-  void addItem({required String key, required Object item}) {}
-
-  @override
-  void getItem({required String key}) {
-    // TODO: implement getItem
+class SharedCacheManager {
+  SharedCacheManager._();
+  static SharedCacheManager? _instance;
+  static Future<SharedCacheManager?> instance() async {
+    _instance ??= SharedCacheManager._();
+    _instance?._sharedPreferencesInstance =
+        await SharedPreferences.getInstance();
+    return _instance;
   }
 
-  @override
-  void removeItem({required String key}) {
-    // TODO: implement removeItem
-  }
+  late final SharedPreferences _sharedPreferencesInstance;
+
+  void writeDataBool(MapEntry<String, bool> data) =>
+      _sharedPreferencesInstance.setBool(data.key, data.value);
+
+  void wrtieDataString(MapEntry<String, String> data) =>
+      _sharedPreferencesInstance.setString(data.key, data.value);
+
+  bool? getDataBool(String key) => _sharedPreferencesInstance.getBool(key);
+
+  String? getDataString(String key) =>
+      _sharedPreferencesInstance.getString(key);
+
+  Future<bool> removeData(String key) => _sharedPreferencesInstance.remove(key);
 }
