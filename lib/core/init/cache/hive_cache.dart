@@ -1,6 +1,8 @@
+// ignore_for_file: strict_raw_type
+
 import 'package:tmdb_movie/core/interface/ICacheManager.dart';
 
-class HiveCacheManager extends ICacheManager {
+class HiveCacheManager<T> extends ICacheManager<T> {
   HiveCacheManager._();
   static HiveCacheManager? _instance;
   static HiveCacheManager? get instance => _instance ??= HiveCacheManager._();
@@ -16,13 +18,13 @@ class HiveCacheManager extends ICacheManager {
   }
 
   @override
-  getAllItem() {
+  List<T> getAllItem() {
     // TODO: implement getAllItem
     throw UnimplementedError();
   }
 
   @override
-  getItem({required String key}) {
+  T getItem({required String key}) {
     // TODO: implement getItem
     throw UnimplementedError();
   }

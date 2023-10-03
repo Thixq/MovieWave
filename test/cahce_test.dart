@@ -1,21 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tmdb_movie/core/init/cache/shared_preferencs_cache.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   test('constructor async', () async {
-    final first = await deneme.instance();
+    final first = await Deneme.instance();
     print(first!.a);
   });
 }
 
-class deneme {
-  deneme._();
+class Deneme {
+  Deneme._();
   int a = 0;
-  static deneme? _instance;
-  static Future<deneme?> instance() async {
-    _instance ??= deneme._();
+  static Deneme? _instance;
+  static Future<Deneme?> instance() async {
+    _instance ??= Deneme._();
     await Future.delayed(const Duration(seconds: 5));
     _instance?.a = 1;
     return _instance;
