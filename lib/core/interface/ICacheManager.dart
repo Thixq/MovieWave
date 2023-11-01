@@ -1,5 +1,7 @@
-abstract class ICacheManager {
-  void addItem({required String key, required Object item});
+abstract class ICacheManager<T> {
+  void addItem({required MapEntry<String, dynamic> item});
   void removeItem({required String key});
-  void getItem({required String key});
+  T getItem({required String key});
+  List<T> getAllItem();
+  void addAllItem({required List<MapEntry<String, dynamic>> items});
 }
