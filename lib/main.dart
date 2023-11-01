@@ -5,7 +5,9 @@ import 'package:tmdb_movie/core/init/localization/localization_manager.dart';
 import 'package:tmdb_movie/features/page/splash/splash_view.dart';
 import 'package:tmdb_movie/features/page/splash/splash_view_model.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
       supportedLocales: LocalizationManager.instance!.supportedLanguage,
